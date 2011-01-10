@@ -1,0 +1,10 @@
+FLOW3:
+  security:
+    authentication:
+      providers:
+        DefaultProvider:
+          providerClass: PersistedUsernamePasswordProvider
+          entryPoint:
+            webRedirect:
+              uri: articleworkflow/login
+      authenticationStrategy: oneToken

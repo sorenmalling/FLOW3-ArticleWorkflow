@@ -1,0 +1,70 @@
+<f:layout name="Master" />
+
+<f:section name="content">
+
+	<h2>Artikel workflow</h2>
+
+	<h3>Seneste artikler retur</h3>
+
+	<table border="0" width="48%" style="float:left">
+		<thead>
+			<tr>
+				<th>Overskrift</th>
+				<th>Status</th>
+				<th>Sidste ændring</th>
+			</tr>
+		</thead>
+		<tbody>
+		<f:for each="{articles}" as="article">
+			<tr>
+				<td>{article.rubric}</td>
+				<td>{article.rubric}</td>
+				<td>{article.rubric}</td>
+			</tr>
+		</f:for>
+			<tr>
+				<td class="status status-warning">"Rulle Marie" kom glad til lejren</td>
+				<td class="status status-warning">Afsendt</td>
+				<td class="status status-warning">18/11 2010 - 08:22</td>
+			</tr>
+			<tr>
+				<td class="status status-error">bla </td>
+				<td class="status status-error">bla</td>
+				<td class="status status-error">bla</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<!--<h3>Dine artikler</h3>-->
+
+	<table border="0" width="48%" style="float:right">
+		<thead>
+			<tr>
+				<th>Overskrift</th>
+				<th>Status</th>
+				<th>Oprettet</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="status status-warning">"Rulle Marie" kom glad til lejren</td>
+				<td class="status status-warning">Afsendt</td>
+				<td class="status status-warning">18/11 2010 - 08:22</td>
+			</tr>
+			<tr>
+				<td class="status status-error">bla </td>
+				<td class="status status-error">bla</td>
+				<td class="status status-error">bla</td>
+			</tr>
+		<f:for each="{articles}" as="article">
+			<tr>
+				<td><f:link.action action="edit" controller="Article" arguments="{editedArticle : article}">{article.rubric}</f:link.action></td>
+				<td>{article.rubric}</td>
+				<td><f:format.date format="d/m Y - H:i:s">{article.createdDate}</f:format.date></td>
+			</tr>
+		</f:for>
+
+		</tbody>
+	</table>
+
+</f:section>

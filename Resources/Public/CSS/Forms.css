@@ -1,0 +1,58 @@
+fieldset {
+	border-top: 1px transparent;
+	border-left: 1px solid #333;
+	border-bottom: 1px solid #333;
+	border-right: 1px solid #333;
+	margin-bottom: 10px;
+	padding: 10px;
+}
+
+fieldset legend {
+	background-image: url('../Icons/toggle_minus.png');
+	background-repeat: no-repeat;
+	background-position: center left;
+	padding-left: 25px;
+	cursor: pointer;
+}
+
+fieldset legend {
+	font-weight: lighter;
+	font-size: 12pt;
+}
+
+fieldset ol {
+	margin: 0;
+	padding: 0;
+}
+
+fieldset li {
+	list-style: none;
+	padding: 5px;
+}
+
+fieldset label {
+	width: 150px;
+	float: left;
+}
+
+input, textarea {
+	font-family: verdana;
+	font-size: 8pt;
+	padding: 3px;
+}
+
+input, select {
+	width: 200px;
+}
+
+input.form-button {
+	padding: 5px 5px 5px 15px;
+	min-width: 100px;
+	background: #c8c8c8;
+}
+
+input.button-save {
+	background-image: url('../Icons/famfamfam/accept.png');
+	background-position: center left;
+	background-repeat: no-repeat;
+}

@@ -1,0 +1,36 @@
+<f:layout name="Master" />
+<f:section name="content">
+
+	<h2>Opret artikel</h2>
+	<f:flashMessages />
+	<f:form action="create" name="editedArticle">
+		<div style="width:58%;float:left;">
+			<f:render partial="ArticleContent"/>
+		<f:form.submit value="Gem" class="form-button button-save"/>
+		</div>
+		<div style="width: 38%;float:right">
+			<f:render partial="ArticlePhotography"/>
+			<f:render partial="ArticleMedia"/>
+			<f:render partial="ArticleSecretary"/>
+			<f:render partial="ArticleNotes"/>
+		</div>
+
+	</f:form>
+
+	<ol class="article-images-new" style="display: none" title="Nyt billede" modal="true">
+		<li>
+			<label>Link til billede</label>
+			<f:form.textbox property="photographs.photographyHyperlink" />
+		</li>
+		<li>
+			<label>Billede byline</label>
+			<f:form.textbox property="photographs.byline" />
+		</li>
+		<li>
+			<label>Billede tekst</label>
+			<f:form.textbox property="photographs.photographyText" />
+		</li>
+	</ol>
+
+
+</f:section>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" xmlns:f="urn:flow3:fluid">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Artikel Workflow - {titleBasedOnAction}</title>
+<f:base />
+<script type="text/javascript" src="../../../Public/JavaScript/jQuery/latest.js"></script>
+<script type="text/javascript" src="../../../Public/JavaScript/jQueryUI/latest.js"></script>
+<script type="text/javascript" src="../../../Public/JavaScript/Form.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../Public/CSS/Reset.css" />
+<link rel="stylesheet" type="text/css" href="../../../Public/CSS/Jqueryui.css" />
+<link rel="stylesheet" type="text/css" href="../../../Public/CSS/Tables.css" />
+<link rel="stylesheet" type="text/css" href="../../../Public/CSS/Status.css" />
+<link rel="stylesheet" type="text/css" href="../../../Public/CSS/Layout.css" />
+<link rel="stylesheet" type="text/css" href="../../../Public/CSS/Forms.css" />
+<link rel="stylesheet" type="text/css" href="../../../Public/CSS/Icons.css" />
+<link rel="stylesheet" type="text/css" href="../../../Public/CSS/Messages.css" />
+<script>
+
+</script>
+</head>
+<body>
+
+<div id="top-bar">
+	<div id="top-navigation">
+
+		<f:link.action controller="standard" action="index">
+			<span class="icon icon-list">Artikel oversigt</span>
+		</f:link.action>
+
+		<f:link.action controller="article" action="new">
+			<span class="icon icon-newarticle">Ny artikel</span>
+		</f:link.action>
+		
+		<f:link.action controller="account" action="edit">
+			<span class="icon icon-user">Min konto</span>
+		</f:link.action>
+
+		<f:link.action controller="admin">
+			<span class="icon icon-key">Administration</span>
+		</f:link.action>
+
+		<f:link.action controller="account" action="logout">
+			<span class="icon icon-cross">Log ud</span>
+		</f:link.action>
+	</div>
+	<div id="top-project">
+		
+		<span class="icon icon-changeproject">Projekt: FDF Landslejr 2011{project.name}</span>
+	</div>
+</div>
+
+<!--<div id="left-bar" class="navigation">
+	<ul>
+		<li class="left-bar-menu new-user"><f:link.action controller="user" action="new"><span>Opret bruger</span></f:link.action></li>
+		<li class="left-bar-menu new-article"><f:link.action controller="article" action="new"><span>Ny artikel</span></f:link.action></li>
+
+	</ul>
+</div>-->
+
+<div id="container">
+	<f:flashMessages />
+	<f:render section="content" />
+</div>
+
+</body>
+</html>
+

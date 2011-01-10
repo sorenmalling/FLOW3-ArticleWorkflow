@@ -1,0 +1,47 @@
+<f:layout name="Master" />
+
+<f:section name="content">
+	
+	<f:form.errors for="newAccount">
+		<div class="message message-error">
+			<strong>{error.propertyName}</strong>: <f:for each="{error.errors}" as="errorDetail">{errorDetail.message}</f:for>
+		</div>
+	</f:form.errors>
+
+	<f:form action="create" name="newAccount" object="{newAccount}">
+	<f:form.hidden name="authenticationProviderName" value="DefaultProvider" />
+	<fieldset>
+		<legend class="icon icon-vcard">Praktisk information</legend>
+		<ol>
+			<li>
+				<label>Firstname</label>
+				<f:form.textfield property="firstName" />
+			</li>
+			<li>
+				<label>Last name</label>
+				<f:form.textfield property="lastName" />
+			</li>
+			<li>
+				<label>E-mail</label>
+				<f:form.textfield property="accountIdentifier" />
+			</li>
+			<li>
+				<label>Password</label>
+				<f:form.password property="credentialsSource" />
+			</li>
+		</ol>
+	</fieldset>
+	<f:form.submit value="Opret" class="form-button button-save"/>
+	</f:form>
+
+	<fieldset>
+		<legend class="icon icon-role">Rolle</legend>
+			<ol>
+				<li>
+					<!--<label>Rolle</label>
+					<f:form.select property="role" options="{Journalist: 'Journalist', Editor: 'Editor', Administrator: 'Administrator'}" />-->
+				</li>
+			</ol>
+	</fieldset>
+</f:section>
+

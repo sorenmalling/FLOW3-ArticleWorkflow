@@ -1,0 +1,31 @@
+table {
+	border-spacing: 50px;
+	border-collapse: 50
+}
+
+thead {
+	text-align: left;
+	font-weight: normal;
+	background-image: url('../Graphics/top-bar-background.png');
+	background-repeat: repeat-x;
+	border-bottom: 2px solid #f00;
+	color: #ffffff;
+}
+
+thead th {
+	padding: 9px 5px 10px 5px;
+	
+	height: 24px;
+}
+
+tbody tr td {
+	padding: 10px;
+}
+
+tbody tr {
+}
+
+tbody tr:hover {
+	background-color: #ccc;
+	background-image: inherit;
+}

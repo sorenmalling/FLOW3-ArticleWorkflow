@@ -1,0 +1,73 @@
+.icon {
+	background-repeat: no-repeat;
+	background-position: center left;
+	padding-left: 20px;
+}
+
+.icon-add {
+	background-image: url('../Icons/famfamfam/add.png');
+}
+
+.icon-remove {
+	background-image: url('../Icons/famfamfam/delete.png');
+}
+
+.icon-cross {
+	background-image: url('../Icons/famfamfam/cross.png');
+}
+
+.icon-magnifier {
+	background-image: url('../Icons/famfamfam/magnifier.png');
+}
+
+.icon-changeproject {
+	background-image: url('../Icons/famfamfam/application_cascade.png');
+}
+
+.icon-newarticle {
+	background-image: url('../Icons/famfamfam/page_white_add.png');
+}
+
+.icon-newaccount {
+	background-image: url('../Icons/famfamfam/user_add.png');
+}
+
+.icon-list {
+	background-image: url('../Icons/famfamfam/application_view_list.png');
+}
+
+.icon-user {
+	background-image: url('../Icons/famfamfam/user.png');
+}
+
+.icon-role {
+	background-image: url('../Icons/famfamfam/user_suit.png');
+}
+
+.icon-vcard {
+	background-image: url('../Icons/famfamfam/vcard.png');
+}
+
+.icon-image {
+	background-image: url('../Icons/famfamfam/image.png');
+}
+
+.icon-transmit {
+	background-image: url('../Icons/famfamfam/transmit.png');
+}
+
+.icon-usergo {
+	background-image: url('../Icons/famfamfam/user_go.png');
+}
+
+.icon-page {
+	background-image: url('../Icons/famfamfam/page_white_text.png');
+}
+
+.icon-key {
+	background-image: url('../Icons/famfamfam/key.png');
+}
+
+.icon-note {
+	background-image: url('../Icons/famfamfam/note.png');
+}
