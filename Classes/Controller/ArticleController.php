@@ -50,13 +50,14 @@ class ArticleController extends \F3\ArticleWorkflow\Controller\AbstractBaseContr
 
 	/**
 	 * New action
+	 * 
 	 * @param \F3\ArticleWorkflow\Domain\Model\Article $newArticle
 	 * @return void
 	 * @dontvalidate $newArticle
 	 * @author Soren Malling <mail@typo3tech.net>
 	 */
-	public function newAction(\F3\ArticleWorkflow\Domain\Model\Article $newArticle = NULL) {
-		$this->view->assign('newArticle', $newArticle);
+	public function newAction(\F3\ArticleWorkflow\Domain\Model\Article $article = NULL) {
+		$this->view->assign('newArticle', $article);
 	}
 
 	/**
@@ -76,9 +77,8 @@ class ArticleController extends \F3\ArticleWorkflow\Controller\AbstractBaseContr
 	 * @return void
 	 * @author Soren Malling <mail@typo3tech.net>
 	 */
-	public function editAction(\F3\ArticleWorkflow\Domain\Model\Article $editedArticle) {
-		$this->view->assign('editedArticle', $editedArticle);
-		\F3\var_dump($editedArticle);
+	public function editAction(\F3\ArticleWorkflow\Domain\Model\Article $editedArticle = NULL) {
+		$this->view->assign('article', $editedArticle);
 	}
 
 	

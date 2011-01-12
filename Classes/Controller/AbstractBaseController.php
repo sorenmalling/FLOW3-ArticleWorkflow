@@ -45,6 +45,7 @@ abstract class AbstractBaseController extends \F3\FLOW3\MVC\Controller\ActionCon
 	 * @author Soren Malling <mail@typo3tech.net>
 	 */
 	protected function initializeView(\F3\FLOW3\MVC\View\ViewInterface $view) {
+
 		/**
 		 * TODO:
 		 * Find what project the user has selected and assign for use in hidden fields
@@ -60,7 +61,6 @@ abstract class AbstractBaseController extends \F3\FLOW3\MVC\Controller\ActionCon
 				}
 			}
 		}
-		#\F3\var_dump($this->securityContext->getAccount()->getParty(), 'securityContext..');
 	}
 
 }

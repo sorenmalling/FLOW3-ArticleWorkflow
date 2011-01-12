@@ -42,6 +42,7 @@ class StandardController extends \F3\ArticleWorkflow\Controller\AbstractBaseCont
 	 * @return void
 	 */
 	public function indexAction() {
+		#$this->view->assign('myArticles', $this->articleRepository->findByCreatedBy($))
 		$this->view->assign('articles', $this->articleRepository->findAll());
 	}
 	

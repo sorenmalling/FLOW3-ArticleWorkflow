@@ -36,12 +36,6 @@ class LoginController extends \F3\ArticleWorkflow\Controller\AbstractBaseControl
 	protected $authenticationManager;
 
 	/**
-	 * @inject
-	 * @var \F3\FLOW3\Security\AccountRepository
-	 */
-	protected $accountRepository;
-
-	/**
 	 * Index action
 	 *
 	 * @return void
@@ -61,12 +55,15 @@ class LoginController extends \F3\ArticleWorkflow\Controller\AbstractBaseControl
 
 		$roles = array(
 		  $this->objectManager->create('F3\FLOW3\Security\Policy\Role', 'Administrator'),
-		);
+		);*/
 
-		$account->setAccountIdentifier($username);
+		$party = $this->objectManager->create('F3\Party\Domain\Model\Party');
+
+		/*$account->setAccountIdentifier($username);
 		$account->setCredentialsSource($credentials);
 		$account->setAuthenticationProviderName('DefaultProvider');
 		$account->setRoles($roles);
+		$account->setParty($party);
 
 		$this->accountRepository->add($account);*/
 	}
