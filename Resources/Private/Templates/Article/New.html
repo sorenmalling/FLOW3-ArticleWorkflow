@@ -6,14 +6,14 @@
 	<f:flashMessages />
 	<f:form action="create" name="newArticle">
 		<div style="width:58%;float:left;">
-			<f:render partial="ArticleContent"/>
+			<f:render partial="Article/Content"/>
 		<f:form.submit value="Gem" class="form-button button-save"/>
 		</div>
 		<div style="width: 38%;float:right">
-			<f:render partial="ArticlePhotography"/>
-			<f:render partial="ArticleMedia"/>
-			<f:render partial="ArticleSecretary"/>
-			<f:render partial="ArticleNotes"/>
+			<f:render partial="Article/Photography"/>
+			<f:render partial="Article/Media"/>
+			<f:render partial="Article/Secretary"/>
+			<f:render partial="Article/Notes"/>
 		</div>
 
 	</f:form>
