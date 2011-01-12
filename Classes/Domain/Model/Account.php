@@ -29,7 +29,7 @@ namespace F3\ArticleWorkflow\Domain\Model;
  * @scope prototype
  * @entity
  */
-class Account extends \F3\FLOW3\Security\Account {
+class Account extends \F3\Party\Domain\Model\Party {
 
 	/**
 	 * Firstname

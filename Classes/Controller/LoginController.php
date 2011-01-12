@@ -36,13 +36,19 @@ class LoginController extends \F3\ArticleWorkflow\Controller\AbstractBaseControl
 	protected $authenticationManager;
 
 	/**
+	 * @inject
+	 * @var \F3\FLOW3\Security\AccountRepository
+	 */
+	protected $accountRepository;
+
+	/**
 	 * Index action
 	 *
 	 * @return void
 	 */
 	public function formAction() {
 
-		/*$this->authenticationManager->logout();
+		$this->authenticationManager->logout();
 		$this->accountRepository->removeAll();
 
 		$account = $this->objectManager->create('F3\FLOW3\Security\Account');
@@ -55,17 +61,22 @@ class LoginController extends \F3\ArticleWorkflow\Controller\AbstractBaseControl
 
 		$roles = array(
 		  $this->objectManager->create('F3\FLOW3\Security\Policy\Role', 'Administrator'),
-		);*/
+		);
 
-		$party = $this->objectManager->create('F3\Party\Domain\Model\Party');
+		$party = $this->objectManager->create('F3\ArticleWorkflow\Domain\Model\Account');
 
-		/*$account->setAccountIdentifier($username);
+		$party->setFirstName('Über');
+		$party->setLastName('Admin');
+		#$party->getName()->setFirstName('Über');
+		#$party->getName()->setLastName('Admin');
+		
+		$account->setAccountIdentifier($username);
 		$account->setCredentialsSource($credentials);
 		$account->setAuthenticationProviderName('DefaultProvider');
 		$account->setRoles($roles);
 		$account->setParty($party);
 
-		$this->accountRepository->add($account);*/
+		$this->accountRepository->add($account);
 	}
 	
 	/**

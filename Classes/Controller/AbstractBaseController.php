@@ -61,6 +61,10 @@ abstract class AbstractBaseController extends \F3\FLOW3\MVC\Controller\ActionCon
 				}
 			}
 		}
+		
+		if(count($this->securityContext->getParty()->getProjects()) == (int) 0) {
+			$this->flashMessageContainer->add('Du har ingen projekter tilknyttet din bruger');
+		}
 	}
 
 }
