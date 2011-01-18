@@ -48,7 +48,7 @@ class LoginController extends \F3\ArticleWorkflow\Controller\AbstractBaseControl
 	 */
 	public function formAction() {
 
-		$this->authenticationManager->logout();
+		/*$this->authenticationManager->logout();
 		$this->accountRepository->removeAll();
 
 		$account = $this->objectManager->create('F3\FLOW3\Security\Account');
@@ -76,7 +76,7 @@ class LoginController extends \F3\ArticleWorkflow\Controller\AbstractBaseControl
 		$account->setRoles($roles);
 		$account->setParty($party);
 
-		$this->accountRepository->add($account);
+		$this->accountRepository->add($account);*/
 	}
 	
 	/**

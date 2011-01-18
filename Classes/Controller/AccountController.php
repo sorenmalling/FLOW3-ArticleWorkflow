@@ -33,12 +33,6 @@ class AccountController extends \F3\ArticleWorkflow\Controller\AbstractBaseContr
 	 * @inject
 	 * @var \F3\FLOW3\Security\AccountRepository
 	 */
-	protected $securityAccountRepository;
-
-	/**
-	 * @inject
-	 * @var \F3\ArticleWorkflow\Domain\Repository\AccountRepository
-	 */
 	protected $accountRepository;
 
 	/**
@@ -47,27 +41,61 @@ class AccountController extends \F3\ArticleWorkflow\Controller\AbstractBaseContr
 	 */
 	protected $authenticationManager;
 
-	/**
+    /**
 	 * @inject
-	 * @var \F3\FLOW3\Security\Context
+	 * @var \F3\FLOW3\Security\AccountFactory
 	 */
-	protected $securityContext;
+	protected $accountFactory;
 
 	/**
-	 * New action
+	 * Index controller, showing a lits of users and a form to create a new user
 	 *
 	 * @return void
 	 */
-	public function newAction(\F3\ArticleWorkflow\Domain\Model\Account $newAccount = NULL) {
-		if($newAccount != NULL) {
-			$credentials = md5(md5($newAccount->getCredentialsSource()) . $salt) . ',' . $salt;
-			$newAccount->setCredentialsSource((string) $credentialsSource);
-			$newAccount->setAuthenticationProviderName('DefaultProvider');
-			#$this->accountRepository->add($newAccount);
-			\F3\var_dump($newAccount);
-		}
+	public function indexAction() {
+		$this->view->assign('accounts', $this->accountRepository->findAll());
 	}
 
+	/**
+	 * New action (deprecated, "new" form moved to indexAction)
+	 *
+	 * @return void
+	 */
+	public function newAction() {
+		$this->redirect('index');
+	}
+
+	/**
+	 * Delete action, delete a given object
+	 *
+	 * @param \F3\FLOW3\Security\Account $account
+	 * @return void
+	 */
+	public function deleteAction(\F3\FLOW3\Security\Account $account) {
+		$this->accountRepository->remove($account);
+		#$this->flashMessageContainer->add("Account was deleted");
+		#$this->redirect('index');
+	}
+
+	/**
+	 * Edit action, edit existing account object
+	 *
+	 * @param \F3\FLOW3\Security\Account $account
+	 * @return void
+	 */
+	public function editAction(\F3\FLOW3\Security\Account $account) {
+		$this->view->assign('editAccount', $account);
+	}
+
+	/**
+	 * Update action, update account object
+	 * 
+	 * @param \F3\FLOW3\Security\Account $editAccount
+	 * @dontvalidate $editAccount
+	 */
+	public function updateAction(\F3\FLOW3\Security\Account $editAccount) {
+		\F3\var_dump($editAccount);
+	}
 
 	/**
 	 * Create action
@@ -75,13 +103,29 @@ class AccountController extends \F3\ArticleWorkflow\Controller\AbstractBaseContr
 	 * @param \F3\ArticleWorkflow\Domain\Model\Account
 	 * @return void
 	 */
-	public function createAction(\F3\ArticleWorkflow\Domain\Model\Account $newAccount) {
-		$salt = 'joh316';
-		$credentials = md5(md5($newAccount->getCredentialsSource()) . $salt) . ',' . $salt;
-		$newAccount->setCredentialsSource((string) $credentialsSource);
-		$newAccount->setAuthenticationProviderName('DefaultProvider');
-		#$this->accountRepository->add($newAccount);
-		\F3\var_dump($newAccount);
+	public function createAction(\F3\ArticleWorkflow\Domain\Model\Account $newAccount = NULL) {
+		$accountIdentifier = $newAccount->getElectronicAddress();
+		$existingAccount = $this->accountRepository->findActiveByAccountIdentifierAndAuthenticationProviderName($accountIdentifier, 'DefaultProvider');
+		if ($existingAccount !== NULL) {
+			$this->flashMessageContainer->add('An account with the username "' . $accountIdentifier . '" already exists.');
+			#$this->redirect('new', NULL, NULL, array('account' => $newAccount));
+			$this->redirect('new');
+		}
+
+		$password = \substr(md5(microtime()), 0, 8);
+
+		$account = $this->accountFactory->createAccountWithPassword($newAccount->getElectronicAddress(), $password, array('Journalist'));
+		$account->setParty($newAccount);
+
+		$this->accountRepository->add($account);
+		$this->flashMessageContainer->add('The account ' . $accountIdentifier .' was created with the password ' . $password);
+		$this->redirect('new');
+
+
+
+		/*
+
+		$this->accountRepository->add($account);*/
 	}
 
 	/**
@@ -94,20 +138,6 @@ class AccountController extends \F3\ArticleWorkflow\Controller\AbstractBaseContr
 		$this->redirect('form', 'login');
 	}
 
-	/**
-	 * Create user account
-	 *
-	 * @param string $identifier
-	 * @param string $password
-	 * @param string $role
-	 *
-	 * @return void
-	 * @author Soren Malling <mail@typo3tech.net>
-	 */
-	public function createUserAccount(string $identifier, string $password, string $role) {
-		#$account = $this->accountFactory->createAccountWithPassword($identifier, $password, array($role));
-		#$this->accountRepository->add($account);
-	}
 }
 
 ?>

@@ -47,12 +47,18 @@ input, select {
 
 input.form-button {
 	padding: 5px 5px 5px 15px;
-	min-width: 100px;
+	width: 150px;
 	background: #c8c8c8;
 }
 
 input.button-save {
-	background-image: url('../Icons/famfamfam/accept.png');
+	background-image: url('../Icons/famfamfam/page_save.png');
+	background-position: center left;
+	background-repeat: no-repeat;
+}
+
+input.button-savesend {
+	background-image: url('../Icons/famfamfam/page_go.png');
 	background-position: center left;
 	background-repeat: no-repeat;
 }

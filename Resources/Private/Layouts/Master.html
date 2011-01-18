@@ -39,30 +39,35 @@
 			<span class="icon icon-user">Min konto</span>
 		</f:link.action>
 
-		<f:link.action controller="admin">
-			<span class="icon icon-key">Administration</span>
+		<f:security.ifHasRole role="Administrator">
+		<f:link.action controller="account">
+			<span class="icon icon-user-edit">Brugere</span>
 		</f:link.action>
+		</f:security.ifHasRole>
 
+		<f:security.ifAuthenticated>
 		<f:link.action controller="account" action="logout">
 			<span class="icon icon-cross">Log ud</span>
 		</f:link.action>
+		</f:security.ifAuthenticated>
 	</div>
 	<div id="top-project">
 		
-		<span class="icon icon-changeproject">Projekt: FDF Landslejr 2011{project.name}</span>
+		<span class="icon icon-changeproject">Projekt: {user.activeProject.title}</span>
 	</div>
 </div>
 
-<!--<div id="left-bar" class="navigation">
-	<ul>
-		<li class="left-bar-menu new-user"><f:link.action controller="user" action="new"><span>Opret bruger</span></f:link.action></li>
-		<li class="left-bar-menu new-article"><f:link.action controller="article" action="new"><span>Ny artikel</span></f:link.action></li>
-
-	</ul>
-</div>-->
-
 <div id="container">
-	<f:flashMessages />
+	<div class="message message-information">
+		<p class="message-header">System information</p>
+		<f:flashMessages />
+	</div>
+	<f:form.errors>
+		<div class="message message-error">
+			<p class="message-header">System fejl</p>
+			<strong>{error.propertyName}</strong>: <ul><f:for each="{error.errors}" as="errorDetail"><li>{errorDetail.message}</li></f:for></ul>
+		</div>
+	</f:form.errors>
 	<f:render section="content" />
 </div>
 

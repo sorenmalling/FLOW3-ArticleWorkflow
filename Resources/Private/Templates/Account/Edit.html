@@ -1,0 +1,28 @@
+<f:layout name="Master" />
+
+<f:section name="content">
+
+	<f:form action="update" name="editAccount" object="{editAccount}">
+	<f:form.hidden name="authenticationProviderName" value="ArticleWorkflowProvider" />
+	<fieldset>
+		<legend class="icon icon-vcard">Praktisk information</legend>
+		<ol>
+			<li>
+				<label>Fornavn:</label>
+				<f:form.textfield property="party.firstName" />
+			</li>
+			<li>
+				<label>Fornavn:</label>
+				<f:form.textfield property="party.lastName" />
+			</li>
+			<li>
+				<label>E-mail/brugernavn:</label>
+				<f:form.textfield property="party.electronicAddress" />
+			</li>
+		</ol>
+	</fieldset>
+	<f:form.submit value="Opret" class="form-button button-save"/>
+	</f:form>
+
+</f:section>
+

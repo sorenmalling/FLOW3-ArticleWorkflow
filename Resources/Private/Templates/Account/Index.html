@@ -1,0 +1,55 @@
+<f:layout name="Master" />
+
+<f:section name="content">
+
+	<f:form action="create" name="newAccount" object="{newAccount}">
+	<f:form.hidden name="authenticationProviderName" value="ArticleWorkflowProvider" />
+	<fieldset>
+		<legend class="icon icon-vcard">Praktisk information</legend>
+		<ol>
+			<li>
+				<label>Fornavn:</label>
+				<f:form.textfield property="firstName" />
+			</li>
+			<li>
+				<label>Fornavn:</label>
+				<f:form.textfield property="lastName" />
+			</li>
+			<li>
+				<label>E-mail/brugernavn:</label>
+				<f:form.textfield property="electronicAddress" />
+			</li>
+		</ol>
+	</fieldset>
+	<f:form.submit value="Opret" class="form-button button-save"/>
+	</f:form>
+	<table border="0" width="100%">
+		<thead>
+			<tr>
+				<th>Fornavn</th>
+				<th>Efternavn</th>
+				<th>E-mail/brugernavn</th>
+				<th>Muligheder</th>
+			</tr>
+		</thead>
+		<tbody>
+		<f:for each="{accounts}" as="account">
+			<tr>
+				<td>{account.party.firstName}</td>
+				<td>{account.party.lastName}</td>
+				<td>{account.accountIdentifier}</td>
+				<td>
+					<f:link.action action="delete" arguments="{account : account}" >
+						<img src="{f:uri.resource(path: 'Icons/famfamfam/delete.png')}" />
+					</f:link.action>
+					<f:link.action action="edit" arguments="{account : account}">
+						<img src="{f:uri.resource(path: 'Icons/famfamfam/pencil.png')}" />
+					</f:link.action>
+				</td>
+			</tr>
+		</f:for>
+		</tbody>
+	</table>
+
+</f:section>
+

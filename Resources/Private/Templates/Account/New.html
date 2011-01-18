@@ -1,33 +1,23 @@
 <f:layout name="Master" />
 
 <f:section name="content">
-	
-	<f:form.errors for="newAccount">
-		<div class="message message-error">
-			<strong>{error.propertyName}</strong>: <f:for each="{error.errors}" as="errorDetail">{errorDetail.message}</f:for>
-		</div>
-	</f:form.errors>
 
 	<f:form action="create" name="newAccount" object="{newAccount}">
-	<f:form.hidden name="authenticationProviderName" value="DefaultProvider" />
+	<f:form.hidden name="authenticationProviderName" value="ArticleWorkflowProvider" />
 	<fieldset>
 		<legend class="icon icon-vcard">Praktisk information</legend>
 		<ol>
 			<li>
-				<label>Firstname</label>
+				<label>Fornavn:</label>
 				<f:form.textfield property="firstName" />
 			</li>
 			<li>
-				<label>Last name</label>
+				<label>Fornavn:</label>
 				<f:form.textfield property="lastName" />
 			</li>
 			<li>
-				<label>E-mail</label>
-				<f:form.textfield property="accountIdentifier" />
-			</li>
-			<li>
-				<label>Password</label>
-				<f:form.password property="credentialsSource" />
+				<label>E-mail/brugernavn:</label>
+				<f:form.textfield property="electronicAddress" />
 			</li>
 		</ol>
 	</fieldset>
@@ -41,7 +31,14 @@
 					<!--<label>Rolle</label>
 					<f:form.select property="role" options="{Journalist: 'Journalist', Editor: 'Editor', Administrator: 'Administrator'}" />-->
 				</li>
+			<li>
+				<label>Password</label>
+				<f:form.password property="credentialsSource" />
+			</li>
 			</ol>
 	</fieldset>
+	<f:for each="{accounts}" as="account">
+		<f:debug title="account">{account}</f:debug>
+	</f:for>
 </f:section>
 

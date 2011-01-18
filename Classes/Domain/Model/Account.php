@@ -32,18 +32,26 @@ namespace F3\ArticleWorkflow\Domain\Model;
 class Account extends \F3\Party\Domain\Model\Party {
 
 	/**
-	 * Firstname
-	 *
 	 * @var string
 	 */
 	protected $firstName;
 
 	/**
-	 * Lastname
-	 *
 	 * @var string
 	 */
 	protected $lastName;
+
+	/**
+	 * @var string
+	 */
+	protected $electronicAddress;
+
+	/**
+	 * Active project
+	 *
+	 *@var \F3\ArticleWorkflow\Domain\Model\Project
+	 */
+	protected $activeProject;
 
 	/**
 	 * Projects
@@ -51,6 +59,13 @@ class Account extends \F3\Party\Domain\Model\Party {
 	 * @var \SplObjectStorage<\F3\ArticleWorkflow\Domain\Model\Project>
 	 */
 	protected $projects;
+
+	/**
+	 * User comment
+	 *
+	 * @var string
+	 */
+	protected $comment;
 
 	/**
 	 * Constsructor
@@ -61,6 +76,7 @@ class Account extends \F3\Party\Domain\Model\Party {
 
 	/**
 	 * Getter for firstName
+	 *
 	 * @return string
 	 */
 	public function getFirstName() {
@@ -69,7 +85,9 @@ class Account extends \F3\Party\Domain\Model\Party {
 
 	/**
 	 * Setter for firstName
+	 *
 	 * @param string $firstName
+	 * @return void
 	 */
 	public function setFirstName($firstName) {
 		$this->firstName = $firstName;
@@ -77,6 +95,7 @@ class Account extends \F3\Party\Domain\Model\Party {
 
 	/**
 	 * Getter for lastName
+	 *
 	 * @return string
 	 */
 	public function getLastName() {
@@ -85,10 +104,47 @@ class Account extends \F3\Party\Domain\Model\Party {
 
 	/**
 	 * Setter for lastName
+	 *
 	 * @param string $lastName
+	 * @return void
 	 */
 	public function setLastName($lastName) {
 		$this->lastName = $lastName;
+	}
+
+	/**
+	 * Getter for electronicAddress
+	 *
+	 * @return string
+	 */
+	public function getElectronicAddress() {
+		return $this->electronicAddress;
+	}
+
+	/**
+	 * Setter for electronicAddress
+	 *
+	 * @param string $electronicAddress
+	 * @return void
+	 */
+	public function setElectronicAddress($electronicAddress) {
+		$this->electronicAddress = $electronicAddress;
+	}
+
+	/**
+	 * Getter for activeProject
+	 * @return F3\ArticleWorkflow\Domain\Model\Project
+	 */
+	public function getActiveProject() {
+		return $this->activeProject;
+	}
+
+	/**
+	 * Setter for activeProject
+	 * @param F3\ArticleWorkflow\Domain\Model\Project $activeProject
+	 */
+	public function setActiveProject(\F3\ArticleWorkflow\Domain\Model\Project $activeProject) {
+		$this->activeProject = $activeProject;
 	}
 
 	/**
@@ -115,6 +171,23 @@ class Account extends \F3\Party\Domain\Model\Party {
 	 */
 	public function removeProject(\F3\ArticleWorkflow\Domain\Model\Project $project) {
 		$this->projects->detach($project);
+	}
+
+	/**
+	 * Set comment
+	 * @param string $comment
+	 * @return void
+	 */
+	public function setComment($comment) {
+		$this->comment = $comment;
+	}
+
+	/**
+	 * Get comment
+	 * @return string Comment
+	 */
+	public function getComment() {
+		return $this->comment;
 	}
 
 

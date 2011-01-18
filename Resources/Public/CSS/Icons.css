@@ -40,6 +40,18 @@
 	background-image: url('../Icons/famfamfam/user.png');
 }
 
+.icon-edit {
+	background-image: url('../Icons/famfamfam/pencil.png');
+}
+
+.icon-adduser {
+	background-image: url('../Icons/famfamfam/user_add.png');
+}
+
+.icon-user-edit {
+	background-image: url('../Icons/famfamfam/user_edit.png');
+}
+
 .icon-role {
 	background-image: url('../Icons/famfamfam/user_suit.png');
 }
@@ -70,4 +82,8 @@
 
 .icon-note {
 	background-image: url('../Icons/famfamfam/note.png');
+}
+
+.icon-save {
+	background-image: url('../Icons/famfamfam/page_save');
 }

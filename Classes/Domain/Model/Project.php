@@ -31,6 +31,31 @@ namespace F3\ArticleWorkflow\Domain\Model;
  */
 class Project {
 
+	/**
+	 * Project name
+	 * @var string
+	 * @validate NotEmpty
+	 */
+	protected $title;
+
+	/**
+	 * Getter for title
+	 *
+	 * @return string
+	 */
+	public function getTitle() {
+		return $this->title;
+	}
+
+	/**
+	 * Setter for title
+	 *
+	 * @param string $title
+	 * @return void
+	 */
+	public function setTitle($title) {
+		$this->title = $title;
+	}
 
 }
 ?>

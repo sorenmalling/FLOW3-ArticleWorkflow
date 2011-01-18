@@ -22,16 +22,6 @@
 				<td>{article.rubric}</td>
 			</tr>
 		</f:for>
-			<tr>
-				<td class="status status-warning">"Rulle Marie" kom glad til lejren</td>
-				<td class="status status-warning">Afsendt</td>
-				<td class="status status-warning">18/11 2010 - 08:22</td>
-			</tr>
-			<tr>
-				<td class="status status-error">bla </td>
-				<td class="status status-error">bla</td>
-				<td class="status status-error">bla</td>
-			</tr>
 		</tbody>
 	</table>
 
@@ -46,16 +36,6 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td class="status status-warning">"Rulle Marie" kom glad til lejren</td>
-				<td class="status status-warning">Afsendt</td>
-				<td class="status status-warning">18/11 2010 - 08:22</td>
-			</tr>
-			<tr>
-				<td class="status status-error">bla </td>
-				<td class="status status-error">bla</td>
-				<td class="status status-error">bla</td>
-			</tr>
 		<f:for each="{articles}" as="article">
 			<tr>
 				<td><f:link.action action="edit" controller="Article" arguments="{editedArticle : article}">{article.rubric}</f:link.action></td>

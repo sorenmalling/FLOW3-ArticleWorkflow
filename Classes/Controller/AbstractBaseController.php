@@ -58,12 +58,19 @@ abstract class AbstractBaseController extends \F3\FLOW3\MVC\Controller\ActionCon
 			foreach ($activeTokens as $token) {
 				if ($token->isAuthenticated() !== TRUE) {
 					$this->redirect('Form', 'Login');
+				} else {
+					/**
+					 * We will be doing some check, in order to forward the user to the correct controller/action
+					 */
+					
+					if(count($this->securityContext->getAccount()->getParty()->getProjects()) == (int) 0) {
+					#	throw new \Exception('No no no, you are missing a project');
+					}
+
+					$this->view->assign('user', $this->securityContext->getAccount()->getParty());
 				}
 			}
-		}
-		
-		if(count($this->securityContext->getParty()->getProjects()) == (int) 0) {
-			$this->flashMessageContainer->add('Du har ingen projekter tilknyttet din bruger');
+			
 		}
 	}
 
