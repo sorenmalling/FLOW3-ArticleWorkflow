@@ -43,6 +43,9 @@
 		<f:link.action controller="account">
 			<span class="icon icon-user-edit">Brugere</span>
 		</f:link.action>
+		<f:link.action controller="project">
+			<span class="icon icon-changeproject">Projekter</span>
+		</f:link.action>
 		</f:security.ifHasRole>
 
 		<f:security.ifAuthenticated>
@@ -53,7 +56,7 @@
 	</div>
 	<div id="top-project">
 		
-		<span class="icon icon-changeproject">Projekt: {user.activeProject.title}</span>
+		<span class="icon icon-changeproject">Aktivt projekt: {user.activeProject.title}</span>
 	</div>
 </div>
 

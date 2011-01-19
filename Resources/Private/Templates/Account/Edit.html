@@ -3,7 +3,6 @@
 <f:section name="content">
 
 	<f:form action="update" name="editAccount" object="{editAccount}">
-	<f:form.hidden name="authenticationProviderName" value="ArticleWorkflowProvider" />
 	<fieldset>
 		<legend class="icon icon-vcard">Praktisk information</legend>
 		<ol>
@@ -18,6 +17,10 @@
 			<li>
 				<label>E-mail/brugernavn:</label>
 				<f:form.textfield property="party.electronicAddress" />
+			</li>
+			<li>
+				<label>Tilknyttet projekter</label>
+				<f:form.select property="party.projects" optionLabelField="title" multiple="1" options="{projects}" />
 			</li>
 		</ol>
 	</fieldset>

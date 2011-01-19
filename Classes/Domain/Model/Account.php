@@ -149,10 +149,10 @@ class Account extends \F3\Party\Domain\Model\Party {
 
 	/**
 	 * Getter for projects
-	 * @return SplObjectStorage
+	 * @return \SplObjectStorage<\F3\ArticleWorkflow\Domain\Model\Project>
 	 */
 	public function getProjects() {
-		return $this->projects;
+		return clone $this->projects;
 	}
 
 	/**
@@ -169,8 +169,11 @@ class Account extends \F3\Party\Domain\Model\Party {
 	 * @param F3\ArticleWorkflow\Domain\Model\Project $project
 	 * @return void
 	 */
-	public function removeProject(\F3\ArticleWorkflow\Domain\Model\Project $project) {
+	public function removeProjects(\F3\ArticleWorkflow\Domain\Model\Project $project) {
 		$this->projects->detach($project);
+		if($project === $this->activeProject) {
+			unset($this->activeProject);
+		}
 	}
 
 	/**

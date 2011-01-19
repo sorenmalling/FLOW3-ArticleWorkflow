@@ -37,6 +37,12 @@ class AccountController extends \F3\ArticleWorkflow\Controller\AbstractBaseContr
 
 	/**
 	 * @inject
+	 * @var \F3\ArticleWorkflow\Domain\Repository\ProjectRepository
+	 */
+	protected $projectRepository;
+
+	/**
+	 * @inject
 	 * @var \F3\FLOW3\Security\Authentication\AuthenticationManagerInterface
 	 */
 	protected $authenticationManager;
@@ -83,8 +89,12 @@ class AccountController extends \F3\ArticleWorkflow\Controller\AbstractBaseContr
 	 * @param \F3\FLOW3\Security\Account $account
 	 * @return void
 	 */
-	public function editAction(\F3\FLOW3\Security\Account $account) {
+	public function editAction(\F3\FLOW3\Security\Account $account = NULL) {
+		if($account === NULL) {
+			$account = $this->securityContext->getAccount();
+		}
 		$this->view->assign('editAccount', $account);
+		$this->view->assign('projects', $this->projectRepository->findAll());
 	}
 
 	/**
@@ -95,6 +105,7 @@ class AccountController extends \F3\ArticleWorkflow\Controller\AbstractBaseContr
 	 */
 	public function updateAction(\F3\FLOW3\Security\Account $editAccount) {
 		\F3\var_dump($editAccount);
+		$this->accountRepository->update($editAccount);
 	}
 
 	/**
@@ -120,12 +131,6 @@ class AccountController extends \F3\ArticleWorkflow\Controller\AbstractBaseContr
 		$this->accountRepository->add($account);
 		$this->flashMessageContainer->add('The account ' . $accountIdentifier .' was created with the password ' . $password);
 		$this->redirect('new');
-
-
-
-		/*
-
-		$this->accountRepository->add($account);*/
 	}
 
 	/**

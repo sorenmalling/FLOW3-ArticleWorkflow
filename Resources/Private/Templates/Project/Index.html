@@ -1,0 +1,38 @@
+<f:layout name="Master" />
+
+<f:section name="content">
+
+	<f:form action="create" name="newProject" object="{newProject}">
+	<fieldset>
+		<legend class="icon icon-vcard">Praktisk information</legend>
+		<ol>
+			<li>
+				<label>Projekt navn:</label>
+				<f:form.textfield property="title" />
+			</li>
+		</ol>
+	</fieldset>
+	<f:form.submit value="Opret" class="form-button button-save"/>
+	</f:form>
+	<table border="0" width="100%">
+		<thead>
+			<tr>
+				<th>Projekt navn</th>
+				<th>Muligheder</th>
+			</tr>
+		</thead>
+		<tbody>
+		<f:for each="{projects}" as="project">
+			<tr>
+				<td>{project.title}</td>
+				<td>
+					<img src="{f:uri.resource(path: 'Icons/famfamfam/delete.png')}" />
+					<img src="{f:uri.resource(path: 'Icons/famfamfam/pencil.png')}" />
+				</td>
+			</tr>
+		</f:for>
+		</tbody>
+	</table>
+
+</f:section>
+
