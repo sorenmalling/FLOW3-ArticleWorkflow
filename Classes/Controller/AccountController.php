@@ -79,6 +79,9 @@ class AccountController extends \F3\ArticleWorkflow\Controller\AbstractBaseContr
 	 */
 	public function deleteAction(\F3\FLOW3\Security\Account $account) {
 		$this->accountRepository->remove($account);
+		if($account === $this->securityContext->getAccount()) {
+			$this->logoutAction();
+		}
 		#$this->flashMessageContainer->add("Account was deleted");
 		#$this->redirect('index');
 	}
@@ -104,8 +107,14 @@ class AccountController extends \F3\ArticleWorkflow\Controller\AbstractBaseContr
 	 * @dontvalidate $editAccount
 	 */
 	public function updateAction(\F3\FLOW3\Security\Account $editAccount) {
-		\F3\var_dump($editAccount);
-		$this->accountRepository->update($editAccount);
+	 \F3\var_dump($editAccount);
+		/*try {
+			$this->accountRepository->update($editAccount);
+			$this->flashMessageContainer->add('Bruger information opdateret');
+			$this->redirect('Index', 'Standard');
+		} catch(\F3\FLOW3\Exception $exception) {
+		}*/
+
 	}
 
 	/**

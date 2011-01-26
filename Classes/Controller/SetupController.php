@@ -27,7 +27,7 @@ namespace F3\ArticleWorkflow\Controller;
  *
  * @license http://www.gnu.org/licenses/lgpl.html GNU Lesser General Public License, version 3 or later
  */
-class SetupController extends \F3\ArticleWorkflow\Controller\AbstractBaseController {
+class SetupController extends \F3\FLOW3\MVC\Controller\ActionController {
 
 	/**
 	 * @inject
@@ -64,6 +64,12 @@ class SetupController extends \F3\ArticleWorkflow\Controller\AbstractBaseControl
 	 * @return void
 	 */
 	public function indexAction() {
+		/**
+		 * TODO IN SETUP (NOT PRIORITIZED)
+		 * - Create roles
+		 * - Create first project
+		 * - Create admin user
+		 */
 		$account = $this->objectManager->create('F3\FLOW3\Security\Account');
 		$roles = array(
 			$this->objectManager->create('F3\FLOW3\Security\Policy\Role', 'Journalist'),

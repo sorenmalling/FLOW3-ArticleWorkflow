@@ -1,6 +1,0 @@
--
-  name: 'default'
-  uriPattern:    ''
-  defaults:
-    '@package':    ArticleWorkflow
-    '@controller': Standard

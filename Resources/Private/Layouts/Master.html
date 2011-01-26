@@ -26,7 +26,7 @@
 
 <div id="top-bar">
 	<div id="top-navigation">
-
+		<f:security.ifAuthenticated>
 		<f:link.action controller="standard" action="index">
 			<span class="icon icon-list">Artikel oversigt</span>
 		</f:link.action>
@@ -46,17 +46,20 @@
 		<f:link.action controller="project">
 			<span class="icon icon-changeproject">Projekter</span>
 		</f:link.action>
+		<f:link.action controller="project">
+			<span class="icon icon-templates">Skabeloner</span>
+		</f:link.action>
 		</f:security.ifHasRole>
 
-		<f:security.ifAuthenticated>
 		<f:link.action controller="account" action="logout">
 			<span class="icon icon-cross">Log ud</span>
 		</f:link.action>
 		</f:security.ifAuthenticated>
 	</div>
 	<div id="top-project">
-		
+		<f:security.ifAuthenticated>
 		<span class="icon icon-changeproject">Aktivt projekt: {user.activeProject.title}</span>
+		</f:security.ifAuthenticated>
 	</div>
 </div>
 
@@ -73,6 +76,7 @@
 	</f:form.errors>
 	<f:render section="content" />
 </div>
+
 
 </body>
 </html>

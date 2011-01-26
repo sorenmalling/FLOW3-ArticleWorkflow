@@ -38,6 +38,12 @@ abstract class AbstractBaseController extends \F3\FLOW3\MVC\Controller\ActionCon
 	protected $securityContext;
 
 	/**
+	 * @inject
+	 * @var \F3\ArticleWorkflow\Domain\Repository\ProjectRepository
+	 */
+	protected $projectRepository;
+
+	/**
 	 * Initializes the view before invoking an action method.
 	 *
 	 * @param \F3\FLOW3\MVC\View\ViewInterface $view The view to be initialized
@@ -59,12 +65,20 @@ abstract class AbstractBaseController extends \F3\FLOW3\MVC\Controller\ActionCon
 				if ($token->isAuthenticated() !== TRUE) {
 					$this->redirect('Form', 'Login');
 				} else {
+
 					/**
-					 * We will be doing some check, in order to forward the user to the correct controller/action
+					 * If the current account doesn't have a activeProject,
+					 * redirect the user to the editAccount action
+					 * with a flashmessage, telling the user what to do
 					 */
-					
-					if(count($this->securityContext->getAccount()->getParty()->getProjects()) == (int) 0) {
-					#	throw new \Exception('No no no, you are missing a project');
+
+					if($this->projectRepository->countAll() == (int) 0) {
+						$this->redirect('Index', 'Setup');
+					}
+
+					if(count($this->securityContext->getAccount()->getParty()->getActiveProject()) == (int) 0 && $this->request->getControllerName() != 'Account') {
+						$this->flashMessageContainer->add('Du skal vælge et aktivt projekt, for at kunne bruge dette system!');
+						$this->redirect('Edit', 'Account');
 					}
 
 					$this->view->assign('user', $this->securityContext->getAccount()->getParty());

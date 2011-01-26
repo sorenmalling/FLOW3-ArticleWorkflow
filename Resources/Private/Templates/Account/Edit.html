@@ -19,9 +19,15 @@
 				<f:form.textfield property="party.electronicAddress" />
 			</li>
 			<li>
-				<label>Tilknyttet projekter</label>
-				<f:form.select property="party.projects" optionLabelField="title" multiple="1" options="{projects}" />
+				<label>Aktivt projekt</label>
+				<f:form.select property="party.activeProject" optionLabelField="title" options="{projects}" />
 			</li>
+			<f:security.ifHasRole role="Administrator">
+			<li>
+				<label>Tilknyttet projekter</label>
+				<f:form.select property="party.projects" optionLabelField="title" options="{projects}" multiple="true" />
+			</li>
+			</f:security.ifHasRole>
 		</ol>
 	</fieldset>
 	<f:form.submit value="Opret" class="form-button button-save"/>
